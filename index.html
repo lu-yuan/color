@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>color</title>
+	<link rel="stylesheet" href="jquery-ui.css">
+	<script src="jquery-1.12.4.js"></script>
+	<script src="jquery-ui.js"></script>
+	<script>
+	$( function() {
+		$.widget( "custom.colorize", {
+			options: {
+				color: 'green'
+			},
+
+			_create: function() {
+				this._delegeEvent();
+			},
+
+			_delegeEvent: function() {
+				var that = this;
+	            that.element.css('background', that.options.color);
+	            that.element.click(function(event) {
+	                that._trigger('click', event, 'red');
+	                that.element.css('background', 'red');
+	            });
+			}
+
+
+		});
+
+		$( "#my-widget1" ).colorize();
+
+	} );
+	</script>
+</head>
+<body>
+
+	<div id="my-widget1" class="custom-colorize" style="width:100px;height:100px;">color me</div>
+
+</body>
+</html>
